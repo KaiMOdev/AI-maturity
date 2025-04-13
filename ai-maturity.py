@@ -10,10 +10,6 @@ try:
 except:
     st.warning("Logo image not found. Please add a logo.png file to the images directory.")
 
-# Load custom CSS
-with open("style.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
 st.title("🤖 AI Maturity Quickscan")
 
 questions_and_options = [

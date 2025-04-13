@@ -1,6 +1,15 @@
 import streamlit as st
+from PIL import Image
 
 st.set_page_config(page_title="AI Maturity Scan", layout="centered")
+
+# Add logo
+try:
+    logo = Image.open("images/logo.png")
+    st.image(logo, width=200)  # Adjust width as needed
+except:
+    st.warning("Logo image not found. Please add a logo.png file to the images directory.")
+
 st.title("🤖 AI Maturity Quickscan")
 
 questions_and_options = [
@@ -20,7 +29,7 @@ questions_and_options = [
         "C. Het leiderschap is een actieve sponsor van AI-projecten en stimuleert innovatie."
     ]),
     ("Is er een breed draagvlak binnen de organisatie voor AI?", [
-        "A. Niet echt; veel collega’s zijn nog onvoldoende vertrouwd met de mogelijkheden en risico’s van AI.",
+        "A. Niet echt; veel collega's zijn nog onvoldoende vertrouwd met de mogelijkheden en risico's van AI.",
         "B. Redelijk; sommige afdelingen tonen enthousiasme, maar niet iedereen is overtuigd.",
         "C. Ja, AI wordt breed gedragen en er is enthousiasme om er mee aan de slag te gaan."
     ]),
@@ -41,7 +50,8 @@ st.write("Beantwoord elke vraag door een keuze te maken:")
 answers = []
 
 for i, (question, opts) in enumerate(questions_and_options):
-    answer = st.radio(f"{i+1}. {question}", opts, key=f"q{i}")
+    st.markdown(f"**{i+1}. {question}**")  # Make question bold
+    answer = st.radio("", opts, key=f"q{i}")  # Empty label since question is shown above
     answers.append(answer[0])  # Enkel de letter A/B/C
 
 # Tel de antwoorden

@@ -1,11 +1,11 @@
 import streamlit as st
 from PIL import Image
 
+st.set_page_config(page_title="AI Maturity Scan", layout="centered")
+
 # Load custom CSS
 with open("style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-st.set_page_config(page_title="AI Maturity Scan", layout="centered")
 
 # Add logo
 try:
